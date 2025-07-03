@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 
 import '../../presentation/auth/page/sign_in_screen.dart';
 import '../../presentation/auth/page/sign_up_screen.dart';
+import '../../presentation/cart/screens/cart_screen.dart';
+import '../../presentation/main_layout/main_layout.dart';
+import '../../presentation/product_details/presentation/screen/product_details.dart';
+import '../../presentation/products_screen/presentation/screens/products_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
@@ -13,6 +17,17 @@ class RouteGenerator {
 
       case Routes.signUpRoute:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+
+      case Routes.cartRoute:
+        return MaterialPageRoute(builder: (_) => const CartScreen());
+      case Routes.mainRoute:
+        return MaterialPageRoute(builder: (_) => const MainLayout());
+
+      case Routes.productsScreenRoute:
+        return MaterialPageRoute(builder: (_) => const ProductsScreen());
+
+      case Routes.productDetails:
+        return MaterialPageRoute(builder: (_) => const ProductDetails());
 
       default:
         return unDefinedRoute();
