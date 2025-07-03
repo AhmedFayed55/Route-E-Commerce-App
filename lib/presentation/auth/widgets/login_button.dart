@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../config/routes_manager/routes.dart';
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/styles_manager.dart';
 import '../../../core/resources/values_manager.dart';
@@ -21,8 +22,8 @@ class LoginButton extends StatelessWidget {
             fontSize: AppSize.s18,
           ),
           onTap: () {
-            // Navigator.pushNamedAndRemoveUntil(
-            //     context, Routes.mainRoute, (route) => false);
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.mainRoute, (route) => false);
           },
         ),
       ),
