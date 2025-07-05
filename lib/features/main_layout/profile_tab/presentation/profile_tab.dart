@@ -1,12 +1,17 @@
+import 'package:ecommerce_app/core/helpers/dialogue_utils.dart';
+import 'package:ecommerce_app/core/local_ds/prefs_helper.dart';
 import 'package:ecommerce_app/core/resources/assets_manager.dart';
 import 'package:ecommerce_app/core/resources/color_manager.dart';
+import 'package:ecommerce_app/core/resources/constants_manager.dart';
 import 'package:ecommerce_app/core/resources/font_manager.dart';
 import 'package:ecommerce_app/core/resources/styles_manager.dart';
 import 'package:ecommerce_app/core/resources/values_manager.dart';
+import 'package:ecommerce_app/core/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../config/routes_manager/routes.dart';
 import '../../../../core/helpers/validators.dart';
 import '../../../../core/widgets/main_text_field.dart';
 
@@ -188,6 +193,13 @@ class ProfileTabState extends State<ProfileTab> {
                 ).copyWith(fontSize: 18.sp),
               ),
               SizedBox(height: AppSize.s50.h),
+              CustomElevatedButton(label: "Logout", onTap: () {
+                //todo: remove token
+                PrefHelper.removeData(key: AppConstants.token);
+                //todo: navigate to login screen
+                Navigator.pushNamedAndRemoveUntil(
+                    context, Routes.signInRoute, (route) => false);
+              })
             ],
           ),
         ),

@@ -30,6 +30,7 @@ dependencies:
   connectivity_plus:
   injectable:
   get_it:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
