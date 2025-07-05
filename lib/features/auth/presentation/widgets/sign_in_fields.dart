@@ -11,34 +11,39 @@ class SignInFields extends StatelessWidget {
     super.key,
     required this.emailController,
     required this.passController,
+    required this.formKey,
   });
 
   final TextEditingController emailController;
   final TextEditingController passController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: AppSize.s28.h,
-      children: [
-        BuildTextField(
-          controller: emailController,
-          backgroundColor: ColorManager.white,
-          hint: 'enter your Email',
-          label: 'Email',
-          textInputType: TextInputType.emailAddress,
-          validation: AppValidators.validateEmail,
-        ),
-        BuildTextField(
-          controller: passController,
-          hint: 'enter your password',
-          backgroundColor: ColorManager.white,
-          label: 'Password',
-          validation: AppValidators.validatePassword,
-          isObscured: true,
-          textInputType: TextInputType.text,
-        ),
-      ],
+    return Form(
+      key: formKey,
+      child: Column(
+        spacing: AppSize.s28.h,
+        children: [
+          BuildTextField(
+            controller: emailController,
+            backgroundColor: ColorManager.white,
+            hint: 'enter your Email',
+            label: 'Email',
+            textInputType: TextInputType.emailAddress,
+            validation: AppValidators.validateEmail,
+          ),
+          BuildTextField(
+            controller: passController,
+            hint: 'enter your password',
+            backgroundColor: ColorManager.white,
+            label: 'Password',
+            validation: AppValidators.validatePassword,
+            isObscured: true,
+            textInputType: TextInputType.text,
+          ),
+        ],
+      ),
     );
   }
 }

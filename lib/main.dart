@@ -1,11 +1,17 @@
+import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/config/routes_manager/route_generator.dart';
 import 'package:ecommerce_app/config/routes_manager/routes.dart';
+import 'package:ecommerce_app/core/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'core/helpers/bloc_observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+  Bloc.observer = MyBlocObserver();
+  configureDependencies();
   runApp(const EcommerceApp());
 }
 

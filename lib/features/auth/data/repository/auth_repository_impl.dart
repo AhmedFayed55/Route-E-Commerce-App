@@ -3,9 +3,11 @@ import 'package:ecommerce_app/core/errors/failures.dart';
 import 'package:ecommerce_app/features/auth/data/data_source/auth_data_source.dart';
 import 'package:ecommerce_app/features/auth/domain/entity/login_response_entity.dart';
 import 'package:ecommerce_app/features/auth/domain/entity/register_response_entity.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../domain/repos/repositories/auth_repository.dart';
 
+@Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   AuthDataSource dataSource;
 

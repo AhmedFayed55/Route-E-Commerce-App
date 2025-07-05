@@ -7,7 +7,9 @@ import '../../../../../core/resources/values_manager.dart';
 import '../../../../../core/widgets/custom_elevated_button.dart';
 
 class SignUpButton extends StatelessWidget {
-  const SignUpButton({super.key});
+  const SignUpButton({super.key, required this.signUpClick});
+
+  final void Function() signUpClick;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class SignUpButton extends StatelessWidget {
             color: ColorManager.primary,
             fontSize: AppSize.s20,
           ),
-          onTap: () {},
+          onTap: signUpClick,
         ),
       ),
     );

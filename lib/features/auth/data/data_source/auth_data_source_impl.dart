@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/core/errors/failures.dart';
 import 'package:ecommerce_app/features/auth/data/data_source/auth_data_source.dart';
 import 'package:ecommerce_app/features/auth/domain/entity/login_response_entity.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/api/api_manager.dart';
 import '../../../../core/api/endpoints.dart';
@@ -10,6 +11,7 @@ import '../../../../core/resources/strings.dart';
 import '../model/login_response_dto.dart';
 import '../model/register_response_dto.dart';
 
+@Injectable(as: AuthDataSource)
 class AuthDataSourceImpl implements AuthDataSource {
   ApiManager apiManager;
 
