@@ -1,12 +1,12 @@
 import 'package:ecommerce_app/config/routes_manager/routes.dart';
 import 'package:flutter/material.dart';
 
-import '../../presentation/auth/page/sign_in_screen.dart';
-import '../../presentation/auth/page/sign_up_screen.dart';
-import '../../presentation/cart/screens/cart_screen.dart';
-import '../../presentation/main_layout/main_layout.dart';
-import '../../presentation/product_details/presentation/screen/product_details.dart';
-import '../../presentation/products_screen/presentation/screens/products_screen.dart';
+import '../../features/auth/presentation/page/sign_in_screen.dart';
+import '../../features/auth/presentation/page/sign_up_screen.dart';
+import '../../features/cart/screens/cart_screen.dart';
+import '../../features/main_layout/main_layout.dart';
+import '../../features/product_details/presentation/screen/product_details.dart';
+import '../../features/products_screen/presentation/screens/products_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
