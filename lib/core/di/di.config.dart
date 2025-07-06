@@ -21,6 +21,20 @@ import '../../features/auth/domain/repos/repositories/auth_repository.dart'
 import '../../features/auth/domain/use_case/login_use_case.dart' as _i973;
 import '../../features/auth/domain/use_case/register_use_case.dart' as _i463;
 import '../../features/auth/presentation/manager/Auth_cubit.dart' as _i505;
+import '../../features/main_layout/home/data/data_sources/remote_ds/home_tab_remote_ds.dart'
+    as _i263;
+import '../../features/main_layout/home/data/data_sources/remote_ds_impl/home_tab_remote_ds_impl.dart'
+    as _i422;
+import '../../features/main_layout/home/data/repositories/home_tab_repo_impl.dart'
+    as _i114;
+import '../../features/main_layout/home/domain/repositories/home_tab_repo.dart'
+    as _i786;
+import '../../features/main_layout/home/domain/use_cases/get_all_brands_use_case.dart'
+    as _i597;
+import '../../features/main_layout/home/domain/use_cases/get_all_categories_use_case.dart'
+    as _i1071;
+import '../../features/main_layout/home/presentation/manager/home_tab_cubit.dart'
+    as _i460;
 import '../api/api_manager.dart' as _i1047;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -34,8 +48,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i364.AuthDataSource>(
       () => _i985.AuthDataSourceImpl(apiManager: gh<_i1047.ApiManager>()),
     );
+    gh.factory<_i263.HomeTabRemoteDataSource>(
+      () => _i422.HomeTabRemoteDataSourceImpl(
+        apiManager: gh<_i1047.ApiManager>(),
+      ),
+    );
     gh.factory<_i212.AuthRepository>(
       () => _i409.AuthRepositoryImpl(dataSource: gh<_i364.AuthDataSource>()),
+    );
+    gh.factory<_i786.HomeTabRepository>(
+      () => _i114.HomeTabRepositoryImpl(
+        remoteDataSource: gh<_i263.HomeTabRemoteDataSource>(),
+      ),
     );
     gh.factory<_i973.LoginUseCase>(
       () => _i973.LoginUseCase(authRepository: gh<_i212.AuthRepository>()),
@@ -47,6 +71,22 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i505.AuthCubit(
         registerUseCase: gh<_i463.RegisterUseCase>(),
         loginUseCase: gh<_i973.LoginUseCase>(),
+      ),
+    );
+    gh.factory<_i597.GetAllBrandesUseCase>(
+      () => _i597.GetAllBrandesUseCase(
+        homeRepository: gh<_i786.HomeTabRepository>(),
+      ),
+    );
+    gh.factory<_i1071.GetAllCategoriesUseCase>(
+      () => _i1071.GetAllCategoriesUseCase(
+        homeRepository: gh<_i786.HomeTabRepository>(),
+      ),
+    );
+    gh.factory<_i460.HomeTabCubit>(
+      () => _i460.HomeTabCubit(
+        getAllCategoriesUseCase: gh<_i1071.GetAllCategoriesUseCase>(),
+        getAllBrandesUseCase: gh<_i597.GetAllBrandesUseCase>(),
       ),
     );
     return this;

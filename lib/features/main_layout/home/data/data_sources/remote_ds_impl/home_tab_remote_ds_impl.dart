@@ -1,11 +1,14 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
+
 import '../../../../../../core/api/api_manager.dart';
 import '../../../../../../core/api/endpoints.dart';
 import '../../../../../../core/errors/failures.dart';
 import '../../models/category_or_brand_response_dto.dart';
 import '../remote_ds/home_tab_remote_ds.dart';
 
+@Injectable(as: HomeTabRemoteDataSource)
 class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
   ApiManager apiManager;
 
