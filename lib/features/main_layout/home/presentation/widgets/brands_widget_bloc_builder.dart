@@ -20,7 +20,7 @@ class BrandsWidgetBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeTabCubit, HomeTabStates>(
-      bloc: viewModel..getAllBrands(),
+      bloc: viewModel,
       builder: (context, state) {
         return viewModel.brandsList.isEmpty
             ? Center(

@@ -20,7 +20,7 @@ class CategoriesWidgetBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeTabCubit, HomeTabStates>(
-      bloc: viewModel..getAllCategories(),
+      bloc: viewModel,
       builder: (context, state) {
         return viewModel.categoriesList.isEmpty
             ? Center(
