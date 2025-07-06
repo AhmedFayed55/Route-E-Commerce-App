@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/config/routes_manager/routes.dart';
 import 'package:ecommerce_app/core/di/di.dart';
+import 'package:ecommerce_app/core/local_ds/prefs_helper.dart';
+import 'package:ecommerce_app/core/resources/constants_manager.dart';
 import 'package:ecommerce_app/features/auth/presentation/manager/Auth_cubit.dart';
 import 'package:ecommerce_app/features/auth/presentation/manager/auth_states.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +70,9 @@ class _SignInScreenState extends State<SignInScreen> {
               title: "Success",
               posActionName: "OK",
               posAction: () {
+                // todo : Save token for auto login
+                PrefHelper.saveData(
+                    key: AppConstants.token, value: state.response.token);
                 //todo: navigate to home screen
                 Navigator.pushNamedAndRemoveUntil(
                     context, Routes.mainRoute, (route) => false);
