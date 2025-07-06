@@ -31,6 +31,9 @@ class _HomeTabState extends State<HomeTab> {
   void initState() {
     super.initState();
     _startImageSwitching();
+    viewModel
+      ..getAllBrands()
+      ..getAllCategories();
   }
 
   void _startImageSwitching() {
