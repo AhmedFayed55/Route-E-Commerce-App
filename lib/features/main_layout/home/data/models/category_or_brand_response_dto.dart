@@ -1,4 +1,5 @@
 import '../../domain/entities/category_or_brand_response.dart';
+import 'meta_data_dto.dart';
 
 class CategoryOrBrandResponseDto extends CategoryOrBrandResponse {
   CategoryOrBrandResponseDto({super.results, super.metadata, super.data});
@@ -45,20 +46,4 @@ class CategoryOrBrandDto extends CategoryOrBrand {
   String? updatedAt;
 }
 
-class MetadataDto extends Metadata {
-  MetadataDto({super.currentPage, super.numberOfPages, super.limit});
 
-  MetadataDto.fromJson(dynamic json) {
-    currentPage = json['currentPage'];
-    numberOfPages = json['numberOfPages'];
-    limit = json['limit'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['currentPage'] = currentPage;
-    map['numberOfPages'] = numberOfPages;
-    map['limit'] = limit;
-    return map;
-  }
-}
