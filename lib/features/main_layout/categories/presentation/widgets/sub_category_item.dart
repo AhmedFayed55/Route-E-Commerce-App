@@ -33,7 +33,13 @@ class SubCategoryItem extends StatelessWidget {
               ),
             ),
           ),
-          Text(title, style: getRegularStyle(color: ColorManager.primary)),
+          Text(
+            title,
+            style: getRegularStyle(color: ColorManager.primary),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            softWrap: true,
+          ),
         ],
       ),
     );
