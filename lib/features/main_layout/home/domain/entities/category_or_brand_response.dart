@@ -1,3 +1,5 @@
+import 'meta_data.dart';
+
 class CategoryOrBrandResponse {
   CategoryOrBrandResponse({this.results, this.metadata, this.data});
 
@@ -15,10 +17,3 @@ class CategoryOrBrand {
   String? image;
 }
 
-class Metadata {
-  Metadata({this.currentPage, this.numberOfPages, this.limit});
-
-  int? currentPage;
-  int? numberOfPages;
-  int? limit;
-}

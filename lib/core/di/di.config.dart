@@ -21,6 +21,18 @@ import '../../features/auth/domain/repos/repositories/auth_repository.dart'
 import '../../features/auth/domain/use_case/login_use_case.dart' as _i973;
 import '../../features/auth/domain/use_case/register_use_case.dart' as _i463;
 import '../../features/auth/presentation/manager/Auth_cubit.dart' as _i505;
+import '../../features/main_layout/categories/data/data_sources/categories_tab_ds.dart'
+    as _i851;
+import '../../features/main_layout/categories/data/data_sources/categories_tab_ds_impl.dart'
+    as _i900;
+import '../../features/main_layout/categories/data/repositories/categories_tab_repo_impl.dart'
+    as _i277;
+import '../../features/main_layout/categories/domain/repositories/categories_tab_repo.dart'
+    as _i927;
+import '../../features/main_layout/categories/domain/use_cases/get_sub_categories_use_case.dart'
+    as _i356;
+import '../../features/main_layout/categories/presentation/manager/categories_tab_cubit.dart'
+    as _i625;
 import '../../features/main_layout/home/data/data_sources/remote_ds/home_tab_remote_ds.dart'
     as _i263;
 import '../../features/main_layout/home/data/data_sources/remote_ds_impl/home_tab_remote_ds_impl.dart'
@@ -53,6 +65,9 @@ extension GetItInjectableX on _i174.GetIt {
         apiManager: gh<_i1047.ApiManager>(),
       ),
     );
+    gh.factory<_i851.CategoriesTabDataSource>(
+      () => _i900.CategoriesTabDataSourceImpl(gh<_i1047.ApiManager>()),
+    );
     gh.factory<_i212.AuthRepository>(
       () => _i409.AuthRepositoryImpl(dataSource: gh<_i364.AuthDataSource>()),
     );
@@ -73,6 +88,12 @@ extension GetItInjectableX on _i174.GetIt {
         loginUseCase: gh<_i973.LoginUseCase>(),
       ),
     );
+    gh.factory<_i927.CategoriesTabRepo>(
+      () => _i277.CategoriesTabRepoImpl(gh<_i851.CategoriesTabDataSource>()),
+    );
+    gh.factory<_i356.GetSubCategoriesUseCase>(
+      () => _i356.GetSubCategoriesUseCase(gh<_i927.CategoriesTabRepo>()),
+    );
     gh.factory<_i597.GetAllBrandesUseCase>(
       () => _i597.GetAllBrandesUseCase(
         homeRepository: gh<_i786.HomeTabRepository>(),
@@ -81,6 +102,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1071.GetAllCategoriesUseCase>(
       () => _i1071.GetAllCategoriesUseCase(
         homeRepository: gh<_i786.HomeTabRepository>(),
+      ),
+    );
+    gh.factory<_i625.CategoriesTabCubit>(
+      () => _i625.CategoriesTabCubit(
+        allCategoriesUseCase: gh<_i1071.GetAllCategoriesUseCase>(),
+        subCategoriesUseCase: gh<_i356.GetSubCategoriesUseCase>(),
       ),
     );
     gh.factory<_i460.HomeTabCubit>(

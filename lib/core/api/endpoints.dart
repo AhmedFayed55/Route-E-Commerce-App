@@ -5,4 +5,7 @@ class EndPoints {
   static const String getAllBrands = "/api/v1/brands";
   static const String getAllProducts = "/api/v1/products";
   static const String addToCart = "/api/v1/cart";
+
+  static String getAllSubCategoriesByCategoryId(String id) =>
+      "/api/v1/categories/$id/subcategories";
 }

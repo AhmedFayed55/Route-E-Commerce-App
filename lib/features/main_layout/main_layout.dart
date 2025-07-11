@@ -4,7 +4,7 @@ import 'package:ecommerce_app/features/main_layout/profile_tab/presentation/prof
 import 'package:flutter/material.dart';
 
 import '../../core/widgets/home_screen_app_bar.dart';
-import 'categories/presentation/categories_tab.dart';
+import 'categories/presentation/page/categories_tab.dart';
 import 'favourite/presentation/favourite_screen.dart';
 import 'home/presentation/page/home_tab.dart';
 
