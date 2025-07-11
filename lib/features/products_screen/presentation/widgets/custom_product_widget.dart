@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/resources/color_manager.dart';
 import 'package:ecommerce_app/core/resources/styles_manager.dart';
+import 'package:ecommerce_app/features/products_screen/domain/entities/Product_response_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,28 +9,16 @@ import '../../../../config/routes_manager/routes.dart';
 import '../../../../core/widgets/heart_button.dart';
 
 class CustomProductWidget extends StatelessWidget {
+  final ProductEntity product;
   final double width;
   final double height;
-  final String image;
-  final String title;
-  final String description;
-  final double price;
-  final double discountPercentage;
-  final double rating;
 
   const CustomProductWidget({
     super.key,
+    required this.product,
     required this.width,
     required this.height,
-    required this.image,
-    required this.title,
-    required this.description,
-    required this.price,
-    required this.discountPercentage,
-    required this.rating,
-  });
-
-  String truncateTitle(String title) {
+  })String truncateTitle(String title) {
     List<String> words = title.split(' ');
     if (words.length <= 2) {
       return title;
@@ -70,24 +60,15 @@ class CustomProductWidget extends StatelessWidget {
                 children: [
                   // Not working with the lastest flutter version
 
-                  // CachedNetworkImage(
-                  //   imageUrl: image,
-                  //   height: height * 0.15,
-                  //   width: double.infinity,
-                  //   fit: BoxFit.cover,
-                  //   placeholder: (context, url) =>
-                  //       const Center(child: CircularProgressIndicator()),
-                  //   errorWidget: (context, url, error) => const Icon(Icons.error),
-                  // ),
-                  // Image.network(
-                  //   image,
-                  //   fit: BoxFit.cover,
-                  // ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(14.r),
-                    ),
-                    child: Image.asset(image, fit: BoxFit.cover, width: width),
+                  CachedNetworkImage(
+                    imageUrl: product.imageCover ?? '',
+                    height: height * 0.15,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                    const Icon(Icons.error),
                   ),
                   Positioned(
                     top: height * 0.01,
@@ -105,7 +86,7 @@ class CustomProductWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      truncateTitle(title),
+                      truncateTitle(product.title ?? ""),
                       style: getMediumStyle(
                         color: ColorManager.textColor,
                         fontSize: 14.sp,
@@ -113,7 +94,7 @@ class CustomProductWidget extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.002),
                     Text(
-                      truncateDescription(description),
+                      truncateDescription(product.description ?? ''),
                       style: getRegularStyle(
                         color: ColorManager.textColor,
                         fontSize: 14.sp,
@@ -126,14 +107,14 @@ class CustomProductWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "EGP $price",
+                            "EGP ${product.price}",
                             style: getRegularStyle(
                               color: ColorManager.textColor,
                               fontSize: 14.sp,
                             ),
                           ),
                           Text(
-                            "$discountPercentage %",
+                            "22%",
                             style: getTextWithLine(),
                           ),
                         ],
@@ -149,7 +130,7 @@ class CustomProductWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Review ($rating)",
+                                "Review (${product.ratingsAverage})",
                                 style: getRegularStyle(
                                   color: ColorManager.textColor,
                                   fontSize: 12.sp,
