@@ -47,6 +47,18 @@ import '../../features/main_layout/home/domain/use_cases/get_all_categories_use_
     as _i1071;
 import '../../features/main_layout/home/presentation/manager/home_tab_cubit.dart'
     as _i460;
+import '../../features/products_screen/data/data_sources/products_ds.dart'
+    as _i440;
+import '../../features/products_screen/data/data_sources/products_ds_impl.dart'
+    as _i914;
+import '../../features/products_screen/data/repositories/products_repo_impl.dart'
+    as _i392;
+import '../../features/products_screen/domain/repositories/products_repo.dart'
+    as _i408;
+import '../../features/products_screen/domain/use_cases/get_products_use_case.dart'
+    as _i94;
+import '../../features/products_screen/presentation/manager/product_tab_cubit.dart'
+    as _i184;
 import '../api/api_manager.dart' as _i1047;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -70,6 +82,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i212.AuthRepository>(
       () => _i409.AuthRepositoryImpl(dataSource: gh<_i364.AuthDataSource>()),
+    );
+    gh.factory<_i440.ProductsDataSource>(
+      () => _i914.ProductsDataSourceImpl(gh<_i1047.ApiManager>()),
     );
     gh.factory<_i786.HomeTabRepository>(
       () => _i114.HomeTabRepositoryImpl(
@@ -104,10 +119,21 @@ extension GetItInjectableX on _i174.GetIt {
         homeRepository: gh<_i786.HomeTabRepository>(),
       ),
     );
+    gh.factory<_i408.ProductsRepo>(
+      () => _i392.ProductRepoImpl(gh<_i440.ProductsDataSource>()),
+    );
+    gh.factory<_i94.GetProductsUseCase>(
+      () => _i94.GetProductsUseCase(gh<_i408.ProductsRepo>()),
+    );
     gh.factory<_i625.CategoriesTabCubit>(
       () => _i625.CategoriesTabCubit(
         allCategoriesUseCase: gh<_i1071.GetAllCategoriesUseCase>(),
         subCategoriesUseCase: gh<_i356.GetSubCategoriesUseCase>(),
+      ),
+    );
+    gh.factory<_i184.ProductTabCubit>(
+      () => _i184.ProductTabCubit(
+        getAllProductsUseCase: gh<_i94.GetProductsUseCase>(),
       ),
     );
     gh.factory<_i460.HomeTabCubit>(
