@@ -14,9 +14,9 @@ class ProductTabCubit extends Cubit<ProductTabStates> {
   static ProductTabCubit get(context) =>
       BlocProvider.of<ProductTabCubit>(context);
 
-  void getProducts() async {
+  void getProducts(categoryId) async {
     emit(ProductTabLoadingState());
-    var either = await getAllProductsUseCase.invoke();
+    var either = await getAllProductsUseCase.invoke(categoryId);
     either.fold(
       (error) {
         emit(ProductTabErrorState(failures: error));
