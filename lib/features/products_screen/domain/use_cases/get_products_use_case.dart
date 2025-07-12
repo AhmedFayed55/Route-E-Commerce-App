@@ -11,7 +11,7 @@ class GetProductsUseCase {
 
   ProductsRepo repo;
 
-  Future<Either<Failures, ProductResponseEntity>> invoke() {
-    return repo.getProducts();
+  Future<Either<Failures, ProductResponseEntity>> invoke(categoryId) {
+    return repo.getProducts(categoryId);
   }
 }

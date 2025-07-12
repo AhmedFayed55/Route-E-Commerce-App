@@ -15,7 +15,7 @@ class ProductsDataSourceImpl implements ProductsDataSource {
   ProductsDataSourceImpl(this.apiManager);
 
   @override
-  Future<Either<Failures, ProductResponseDto>> getProducts() async {
+  Future<Either<Failures, ProductResponseDto>> getProducts(categoryId) async {
     try {
       final List<ConnectivityResult> connectivityResult = await Connectivity()
           .checkConnectivity();
@@ -24,6 +24,9 @@ class ProductsDataSourceImpl implements ProductsDataSource {
         //todo: internet
         var response = await apiManager.getData(
           endPoint: EndPoints.getAllProducts,
+            queryParameters: {
+              "category[in]": categoryId
+            }
         );
         var productResponse = ProductResponseDto.fromJson(response.data);
         if (response.statusCode! >= 200 && response.statusCode! < 300) {

@@ -12,8 +12,9 @@ class ProductRepoImpl implements ProductsRepo {
   ProductRepoImpl(this.dataSource);
 
   @override
-  Future<Either<Failures, ProductResponseEntity>> getProducts() async {
-    var either = await dataSource.getProducts();
+  Future<Either<Failures, ProductResponseEntity>> getProducts(
+      categoryId) async {
+    var either = await dataSource.getProducts(categoryId);
     return either.fold((error) => Left(error), (response) => Right(response));
   }
 }

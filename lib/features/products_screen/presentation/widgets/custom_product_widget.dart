@@ -18,7 +18,9 @@ class CustomProductWidget extends StatelessWidget {
     required this.product,
     required this.width,
     required this.height,
-  })String truncateTitle(String title) {
+  });
+
+  String truncateTitle(String title) {
     List<String> words = title.split(' ');
     if (words.length <= 2) {
       return title;
