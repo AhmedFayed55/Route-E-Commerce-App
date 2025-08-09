@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/helpers/dialogue_utils.dart';
 import 'package:ecommerce_app/core/local_ds/prefs_helper.dart';
 import 'package:ecommerce_app/core/resources/assets_manager.dart';
 import 'package:ecommerce_app/core/resources/color_manager.dart';
@@ -196,6 +195,10 @@ class ProfileTabState extends State<ProfileTab> {
               CustomElevatedButton(label: "Logout", onTap: () {
                 //todo: remove token
                 PrefHelper.removeData(key: AppConstants.token);
+                //todo: remove name
+                PrefHelper.removeData(key: AppConstants.name);
+                //todo: remove email
+                PrefHelper.removeData(key: AppConstants.email);
                 //todo: navigate to login screen
                 Navigator.pushNamedAndRemoveUntil(
                     context, Routes.signInRoute, (route) => false);

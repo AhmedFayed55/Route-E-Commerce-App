@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/resources/color_manager.dart';
 import 'package:ecommerce_app/core/resources/styles_manager.dart';
 import 'package:ecommerce_app/features/products_screen/domain/entities/Product_response_entity.dart';
+import 'package:ecommerce_app/features/products_screen/presentation/manager/product_tab_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -75,8 +76,11 @@ class CustomProductWidget extends StatelessWidget {
                   Positioned(
                     top: height * 0.01,
                     right: width * 0.02,
-                    child: HeartButton(onTap: () {}),
-                  ),
+                    child: HeartButton(
+                      onTap: () {
+                        ProductTabCubit.get(context).addToWishlist(product.id!);
+                      },
+                    )),
                 ],
               ),
             ),

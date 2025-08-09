@@ -2,7 +2,7 @@ import 'package:ecommerce_app/config/routes_manager/routes.dart';
 import 'package:ecommerce_app/core/di/di.dart';
 import 'package:ecommerce_app/core/local_ds/prefs_helper.dart';
 import 'package:ecommerce_app/core/resources/constants_manager.dart';
-import 'package:ecommerce_app/features/auth/presentation/manager/Auth_cubit.dart';
+import 'package:ecommerce_app/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:ecommerce_app/features/auth/presentation/manager/auth_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,6 +73,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 // todo : Save token for auto login
                 PrefHelper.saveData(
                     key: AppConstants.token, value: state.response.token);
+                // todo : Save email
+                PrefHelper.saveData(
+                    key: AppConstants.email, value: state.response.user!.email);
+                // todo : Save name
+                PrefHelper.saveData(
+                    key: AppConstants.name, value: state.response.user!.name);
                 //todo: navigate to home screen
                 Navigator.pushNamedAndRemoveUntil(
                     context, Routes.mainRoute, (route) => false);
@@ -126,7 +132,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 LoginButton(loginClick: () =>
                     viewModel.login(emailController.text, passController.text)),
                 SizedBox(height: 30.h),
-                DontHaveAccount(),
+                const DontHaveAccount(),
               ],
             ),
           ),
