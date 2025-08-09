@@ -20,7 +20,7 @@ import '../../features/auth/domain/repos/repositories/auth_repository.dart'
     as _i212;
 import '../../features/auth/domain/use_case/login_use_case.dart' as _i973;
 import '../../features/auth/domain/use_case/register_use_case.dart' as _i463;
-import '../../features/auth/presentation/manager/Auth_cubit.dart' as _i505;
+import '../../features/auth/presentation/manager/auth_cubit.dart' as _i888;
 import '../../features/main_layout/categories/data/data_sources/categories_tab_ds.dart'
     as _i851;
 import '../../features/main_layout/categories/data/data_sources/categories_tab_ds_impl.dart'
@@ -55,6 +55,8 @@ import '../../features/products_screen/data/repositories/products_repo_impl.dart
     as _i392;
 import '../../features/products_screen/domain/repositories/products_repo.dart'
     as _i408;
+import '../../features/products_screen/domain/use_cases/add_to_wishlist_use_case.dart'
+    as _i423;
 import '../../features/products_screen/domain/use_cases/get_products_use_case.dart'
     as _i94;
 import '../../features/products_screen/presentation/manager/product_tab_cubit.dart'
@@ -97,8 +99,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i463.RegisterUseCase>(
       () => _i463.RegisterUseCase(authRepository: gh<_i212.AuthRepository>()),
     );
-    gh.factory<_i505.AuthCubit>(
-      () => _i505.AuthCubit(
+    gh.factory<_i888.AuthCubit>(
+      () => _i888.AuthCubit(
         registerUseCase: gh<_i463.RegisterUseCase>(),
         loginUseCase: gh<_i973.LoginUseCase>(),
       ),
@@ -122,6 +124,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i408.ProductsRepo>(
       () => _i392.ProductRepoImpl(gh<_i440.ProductsDataSource>()),
     );
+    gh.factory<_i423.AddToWishlistUseCase>(
+      () => _i423.AddToWishlistUseCase(gh<_i408.ProductsRepo>()),
+    );
     gh.factory<_i94.GetProductsUseCase>(
       () => _i94.GetProductsUseCase(gh<_i408.ProductsRepo>()),
     );
@@ -131,15 +136,16 @@ extension GetItInjectableX on _i174.GetIt {
         subCategoriesUseCase: gh<_i356.GetSubCategoriesUseCase>(),
       ),
     );
-    gh.factory<_i184.ProductTabCubit>(
-      () => _i184.ProductTabCubit(
-        getAllProductsUseCase: gh<_i94.GetProductsUseCase>(),
-      ),
-    );
     gh.factory<_i460.HomeTabCubit>(
       () => _i460.HomeTabCubit(
         getAllCategoriesUseCase: gh<_i1071.GetAllCategoriesUseCase>(),
         getAllBrandesUseCase: gh<_i597.GetAllBrandesUseCase>(),
+      ),
+    );
+    gh.factory<_i184.ProductTabCubit>(
+      () => _i184.ProductTabCubit(
+        getAllProductsUseCase: gh<_i94.GetProductsUseCase>(),
+        addToWishlistUseCase: gh<_i423.AddToWishlistUseCase>(),
       ),
     );
     return this;

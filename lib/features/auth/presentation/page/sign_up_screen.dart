@@ -9,7 +9,7 @@ import '../../../../../core/resources/color_manager.dart';
 import '../../../../../core/resources/values_manager.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/helpers/dialogue_utils.dart';
-import '../manager/Auth_cubit.dart';
+import '../manager/auth_cubit.dart';
 import '../manager/auth_states.dart';
 import '../widgets/sign_up_button.dart';
 import '../widgets/sign_up_fields.dart';

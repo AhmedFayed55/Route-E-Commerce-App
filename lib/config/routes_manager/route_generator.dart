@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/page/sign_in_screen.dart';
 import '../../features/auth/presentation/page/sign_up_screen.dart';
-import '../../features/cart/screens/cart_screen.dart';
+import '../../features/cart/presentation/pages/cart_screen.dart';
 import '../../features/main_layout/home/domain/entities/category_or_brand_response.dart';
 import '../../features/main_layout/main_layout.dart';
 import '../../features/product_details/presentation/screen/product_details.dart';
