@@ -5,6 +5,8 @@ class AppConstants {
   static const String searchHint = "what do you search for?";
   static const String addToCart = "Add to Cart";
   static const String token = "token";
+  static const String email = "email";
+  static const String name = "name";
 
   static List<Map<String, dynamic>> favoriteProducts = [
     {

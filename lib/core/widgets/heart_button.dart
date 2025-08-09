@@ -24,7 +24,7 @@ class _HeartButtonState extends State<HeartButton> {
       ),
       onTap: () {
         setState(() {
-          isClicked = !isClicked;
+          isClicked = true;
           heartIcon = !isClicked
               ? IconsAssets.icHeart
               : IconsAssets.icClickedHeart;

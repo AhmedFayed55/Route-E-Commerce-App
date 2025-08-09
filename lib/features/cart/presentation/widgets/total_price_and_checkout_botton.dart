@@ -4,7 +4,7 @@ import 'package:ecommerce_app/core/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/widgets/custom_elevated_button.dart';
+import '../../../../core/widgets/custom_elevated_button.dart';
 
 class TotalPriceAndCheckoutBotton extends StatelessWidget {
   const TotalPriceAndCheckoutBotton({

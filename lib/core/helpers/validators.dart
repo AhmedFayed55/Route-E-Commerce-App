@@ -55,6 +55,8 @@ class AppValidators {
   static String? validateFullName(String? val) {
     if (val == null || val.isEmpty) {
       return 'this field is required';
+    } else if (val.trim().length < 10) {
+      return "Name must be two words or more";
     } else {
       return null;
     }

@@ -5,8 +5,8 @@ import 'package:ecommerce_app/core/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../config/routes_manager/routes.dart';
-import '../../../core/widgets/product_counter.dart';
+import '../../../../config/routes_manager/routes.dart';
+import '../../../../core/widgets/product_counter.dart';
 import 'color_and_size_cart_item.dart';
 
 class CartItemWidget extends StatelessWidget {
