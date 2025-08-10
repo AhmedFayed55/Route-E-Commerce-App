@@ -18,7 +18,7 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<WishlistCubit>(),
+      create: (context) => getIt<WishlistCubit>()..getAllWishlist(),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: AppSize.s14.w,
@@ -43,6 +43,7 @@ class FavouriteScreen extends StatelessWidget {
                             vertical: AppSize.s12.h,
                           ),
                           child: FavoriteItem(
+                            imageUrl: state.products[index].imageCover ?? '',
                             product: AppConstants.favoriteProducts[index],
                           ),
                         );
