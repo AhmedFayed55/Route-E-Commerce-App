@@ -33,6 +33,18 @@ import '../../features/main_layout/categories/domain/use_cases/get_sub_categorie
     as _i356;
 import '../../features/main_layout/categories/presentation/manager/categories_tab_cubit.dart'
     as _i625;
+import '../../features/main_layout/favourite/data/data_sources/wishlist_ds.dart'
+    as _i577;
+import '../../features/main_layout/favourite/data/data_sources/wishlist_ds_impl.dart'
+    as _i111;
+import '../../features/main_layout/favourite/data/repositories/wishlist_repo_impl.dart'
+    as _i511;
+import '../../features/main_layout/favourite/domain/repositories/wishlist_repo.dart'
+    as _i285;
+import '../../features/main_layout/favourite/domain/use_cases/get_all_wishlist_use_case.dart'
+    as _i269;
+import '../../features/main_layout/favourite/presentation/manager/wishlist_cubit.dart'
+    as _i928;
 import '../../features/main_layout/home/data/data_sources/remote_ds/home_tab_remote_ds.dart'
     as _i263;
 import '../../features/main_layout/home/data/data_sources/remote_ds_impl/home_tab_remote_ds_impl.dart'
@@ -89,6 +101,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i364.AuthDataSource>(
       () => _i985.AuthDataSourceImpl(apiManager: gh<_i1047.ApiManager>()),
     );
+    gh.factory<_i577.WishlistDataSource>(
+      () => _i111.WishlistDataSourceImpl(gh<_i1047.ApiManager>()),
+    );
     gh.factory<_i263.HomeTabRemoteDataSource>(
       () => _i422.HomeTabRemoteDataSourceImpl(
         apiManager: gh<_i1047.ApiManager>(),
@@ -99,6 +114,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i251.AddToCartRepository>(
       () => _i668.AddToCartRepositoryImpl(gh<_i18.AddToCartDataSource>()),
+    );
+    gh.factory<_i285.WishlistRepository>(
+      () => _i511.WishlistRepositoryImpl(gh<_i577.WishlistDataSource>()),
     );
     gh.factory<_i212.AuthRepository>(
       () => _i409.AuthRepositoryImpl(dataSource: gh<_i364.AuthDataSource>()),
@@ -129,6 +147,9 @@ extension GetItInjectableX on _i174.GetIt {
         loginUseCase: gh<_i973.LoginUseCase>(),
       ),
     );
+    gh.factory<_i269.GetAllWishlistUseCase>(
+      () => _i269.GetAllWishlistUseCase(gh<_i285.WishlistRepository>()),
+    );
     gh.factory<_i927.CategoriesTabRepo>(
       () => _i277.CategoriesTabRepoImpl(gh<_i851.CategoriesTabDataSource>()),
     );
@@ -147,6 +168,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i408.ProductsRepo>(
       () => _i392.ProductRepoImpl(gh<_i440.ProductsDataSource>()),
+    );
+    gh.factory<_i928.WishlistCubit>(
+      () => _i928.WishlistCubit(gh<_i269.GetAllWishlistUseCase>()),
     );
     gh.factory<_i423.AddToWishlistUseCase>(
       () => _i423.AddToWishlistUseCase(gh<_i408.ProductsRepo>()),

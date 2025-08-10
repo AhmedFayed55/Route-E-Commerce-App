@@ -16,4 +16,13 @@ class GetAllWishlistDto extends GetAllWishlistEntity {
       });
     }
   }
+
+  GetAllWishlistEntity toEntity() =>
+      GetAllWishlistEntity(
+          count: count,
+          status: status,
+          data: data,
+          statusMsg: statusMsg
+      );
+
 }
