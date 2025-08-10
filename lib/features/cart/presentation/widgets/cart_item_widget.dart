@@ -60,7 +60,7 @@ class CartItemWidget extends StatelessWidget {
                   color: ColorManager.primary.withOpacity(0.3),
                 ),
               ),
-              child: Image.asset(
+              child: Image.network(
                 imagePath,
                 fit: BoxFit.cover,
                 height: isPortrait ? height * 0.142 : height * 0.23,

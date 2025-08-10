@@ -11,7 +11,10 @@ import 'add_to_cart_button.dart';
 import 'favourite_item_details.dart';
 
 class FavoriteItem extends StatelessWidget {
-  const FavoriteItem({super.key, required this.product});
+  const FavoriteItem(
+      {super.key, required this.product, required this.imageUrl});
+
+  final String imageUrl;
 
   final Map<String, dynamic> product;
 
@@ -42,7 +45,7 @@ class FavoriteItem extends StatelessWidget {
                   width: AppSize.s120.w,
                   height: AppSize.s135.h,
                   fit: BoxFit.cover,
-                  imageUrl: product["imageUrl"],
+                  imageUrl: imageUrl,
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(
                       color: ColorManager.primary,
