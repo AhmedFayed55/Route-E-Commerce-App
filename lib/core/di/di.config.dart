@@ -47,6 +47,18 @@ import '../../features/main_layout/home/domain/use_cases/get_all_categories_use_
     as _i1071;
 import '../../features/main_layout/home/presentation/manager/home_tab_cubit.dart'
     as _i460;
+import '../../features/product_details/data/data_sources/add_to_cart_ds.dart'
+    as _i18;
+import '../../features/product_details/data/data_sources/add_to_cart_ds_impl.dart'
+    as _i27;
+import '../../features/product_details/data/repositories/add_to_cart_repo_impl.dart'
+    as _i668;
+import '../../features/product_details/domain/repositories/add_to_cart_repo.dart'
+    as _i251;
+import '../../features/product_details/domain/use_cases/add_to_cart_use_case.dart'
+    as _i633;
+import '../../features/product_details/presentation/manager/add_to_cart_cubit.dart'
+    as _i759;
 import '../../features/products_screen/data/data_sources/products_ds.dart'
     as _i440;
 import '../../features/products_screen/data/data_sources/products_ds_impl.dart'
@@ -71,6 +83,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.lazySingleton<_i1047.ApiManager>(() => _i1047.ApiManager());
+    gh.factory<_i18.AddToCartDataSource>(
+      () => _i27.AddToCartDataSourceImpl(gh<_i1047.ApiManager>()),
+    );
     gh.factory<_i364.AuthDataSource>(
       () => _i985.AuthDataSourceImpl(apiManager: gh<_i1047.ApiManager>()),
     );
@@ -82,11 +97,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i851.CategoriesTabDataSource>(
       () => _i900.CategoriesTabDataSourceImpl(gh<_i1047.ApiManager>()),
     );
+    gh.factory<_i251.AddToCartRepository>(
+      () => _i668.AddToCartRepositoryImpl(gh<_i18.AddToCartDataSource>()),
+    );
     gh.factory<_i212.AuthRepository>(
       () => _i409.AuthRepositoryImpl(dataSource: gh<_i364.AuthDataSource>()),
     );
     gh.factory<_i440.ProductsDataSource>(
       () => _i914.ProductsDataSourceImpl(gh<_i1047.ApiManager>()),
+    );
+    gh.factory<_i633.AddToCartUseCase>(
+      () => _i633.AddToCartUseCase(gh<_i251.AddToCartRepository>()),
+    );
+    gh.factory<_i759.AddToCartCubit>(
+      () => _i759.AddToCartCubit(gh<_i633.AddToCartUseCase>()),
     );
     gh.factory<_i786.HomeTabRepository>(
       () => _i114.HomeTabRepositoryImpl(

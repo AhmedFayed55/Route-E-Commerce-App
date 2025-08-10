@@ -5,7 +5,7 @@ abstract class ToastMessage {
   static Future<bool?> toastMsg(
     String msg,
     Color backgroundColor,
-    Color textColor,
+      {Color? textColor}
   ) {
     return Fluttertoast.showToast(
       msg: msg,
@@ -13,7 +13,7 @@ abstract class ToastMessage {
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
       backgroundColor: backgroundColor,
-      textColor: textColor,
+      textColor: textColor ?? Colors.white,
       fontSize: 20,
     );
   }

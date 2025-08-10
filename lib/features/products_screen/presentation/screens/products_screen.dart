@@ -36,6 +36,8 @@ class ProductsScreen extends StatelessWidget {
                 builder: (context, state) {
                   if (state is ProductTabSuccessState) {
                     var products = state.responseEntity.data ?? [];
+                    print("================= ${products[5]
+                        .runtimeType} ============");
                     return products.isNotEmpty
                         ? Expanded(
                             child: GridView.builder(
