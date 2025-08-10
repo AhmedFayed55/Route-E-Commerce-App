@@ -23,6 +23,8 @@ abstract class ImageAssets {
   static const String favoriteIcon = "$imagePath/favorite.png";
   static const String notFavoriteIcon = "$imagePath/not_favorite.png";
   static const String searchIcon = "$imagePath/search.png";
+
+  static const String emptyJson = "assets/animation/empty.json";
 }
 
 class SvgAssets{
