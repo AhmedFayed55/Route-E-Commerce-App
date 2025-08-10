@@ -71,7 +71,7 @@ class CartScreen extends StatelessWidget {
                 },
               ),
               TotalPriceAndCheckoutBotton(
-                totalPrice: 1200,
+                totalPrice: 10350,
                 checkoutButtonOnTap: () {},
               ),
               SizedBox(height: 10.h),
