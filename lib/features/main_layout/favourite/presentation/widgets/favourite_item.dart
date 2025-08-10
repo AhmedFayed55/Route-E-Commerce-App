@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/resources/color_manager.dart';
 import 'package:ecommerce_app/core/resources/constants_manager.dart';
 import 'package:ecommerce_app/core/resources/values_manager.dart';
+import 'package:ecommerce_app/features/main_layout/favourite/presentation/widgets/wishlist_heart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/routes_manager/routes.dart';
-import '../../../../../core/widgets/heart_button.dart';
 import 'add_to_cart_button.dart';
 import 'favourite_item_details.dart';
 
@@ -66,11 +66,7 @@ class FavoriteItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                HeartButton(
-                  onTap: () {
-                    //TODO:remove product from wish list
-                  },
-                ),
+                const WishlistHeartButton(),
                 SizedBox(height: AppSize.s14.h),
                 AddToCartButton(
                   onPressed: () {
