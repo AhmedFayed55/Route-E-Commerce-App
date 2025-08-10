@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/config/routes_manager/routes.dart';
+import 'package:ecommerce_app/features/products_screen/data/models/product_response_dto.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/page/sign_in_screen.dart';
@@ -33,7 +34,9 @@ class RouteGenerator {
         }
 
       case Routes.productDetails:
-        return MaterialPageRoute(builder: (_) => const ProductDetails());
+        ProductDto product = settings.arguments as ProductDto;
+        return MaterialPageRoute(
+            builder: (_) => ProductDetails(product: product,));
 
       default:
         return unDefinedRoute();

@@ -40,14 +40,14 @@ class ProductRating extends StatelessWidget {
         ),
         SizedBox(width: 16.w),
         Image.asset(ImageAssets.rate, width: 30.w),
-        SizedBox(width: 4.w),
+        SizedBox(width: 10.w),
         Expanded(
           child: Text(
             productRating,
             overflow: TextOverflow.ellipsis,
             style: getMediumStyle(
               color: ColorManager.appBarTitleColor,
-            ).copyWith(fontSize: 14.sp),
+            ).copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
           ),
         ),
         ProductCounter(add: (_) {}, remove: (_) {}, productCounter: 1),
